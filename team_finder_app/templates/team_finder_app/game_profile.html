@@ -1,0 +1,28 @@
+{% extends 'team_finder_app/base.html' %}
+{% load static %}
+
+{% block title %}{{ game }}{% endblock %}
+
+{% block content %}
+<h1 class="text-center my-8 text-4xl">Профили {{ game }}</h1>
+{% if profiles %}
+    <div class="md:max-w-[1200px] max-w-[480px] mx-auto rounded-lg text-white max-[400px]:mx-4 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-flow-cols-3 gap-4 px-4 py-3">
+            {% for profile in profiles %}
+                <div class="bg-gray-800 text-white rounded-lg shadow-md">
+                    <div class="mb-2 border-b-2 border-opacity-100 px-4 py-3 border-white/10"><strong>Username:</strong> {{ profile.user.username }}</div>
+                    <div class="mb-2 border-b-2 border-opacity-100 px-4 py-3 border-white/10"><strong>Discord:</strong> {{ profile.discord }}</div>
+                    <div class="mb-2 border-b-2 border-opacity-100 px-4 py-3 border-white/10"><strong>Steam:</strong> {{ profile.steam }}</div>
+                    <div class="mb-2 border-b-2 border-opacity-100 px-4 py-3 border-white/10"><strong>Epic Games:</strong> {{ profile.epic_games }}</div>
+                    <div class="mb-2 border-b-2 border-opacity-100 px-4 py-3 border-white/10"><strong>Age:</strong> {{ profile.age }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+{% else %}
+    <h2 class="text-center text-5xl mx-4 mt-40">На данный момент профилей нет</h2>
+{% endif %}
+
+
+{% endblock %}
