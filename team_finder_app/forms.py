@@ -15,4 +15,4 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['discord', 'steam', 'epic_games', 'age', 'game']
+        fields = ['discord', 'steam', 'epic_games', 'ubisoft', 'age', 'game']

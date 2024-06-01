@@ -5,54 +5,54 @@
 
 {% block content %}
 
-    <body class="bg-gray-800">
-        <div class="max-w-[720px] mx-auto mt-10 p-4 rounded-lg shadow sm:p-6 bg-gray-800 border-gray-700">
-            <h5 class="mb-3 text-base font-semibold md:text-xl text-white">
+<style>
+    @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hover-effect {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hover-effect:hover {
+    background-color: #e2e8f0; 
+    transform: scale(1.05);
+}
+
+.dark-hover-effect {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dark-hover-effect:hover {
+    background-color: #4a5568; 
+    transform: scale(1.05);
+}
+</style>
+
+<body class="bg-gray-800 fade-in">
+    <div class="max-w-[720px] mx-auto mt-10 p-4 rounded-lg shadow sm:p-6 bg-gray-800 border-gray-700 fade-in">
+        <h5 class="mb-3 text-base font-semibold md:text-xl text-white fade-in">
             Подбор тиммейтов
-            </h5>
-            <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Выберите игру и найдите новых тиммейтов!</p>
-            <ul class="my-4 space-y-3">
-                <li>
-                    <a href="{% url 'game_profile' game='CoD Warzone' %}" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">CoD Warzone</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'game_profile' game='Fortnite' %}" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">Fortnite</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'game_profile' game='Dota 2' %}" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">Dota 2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'game_profile' game='CS:2' %}" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">CS:2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'game_profile' game='Apex Legends' %}" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-                    <span class="flex-1 ms-3 whitespace-nowrap">Apex Legends</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'game_profile' game='LoL' %}" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-            
-                    <span class="flex-1 ms-3 whitespace-nowrap">League of Legends</span>
+        </h5>
+        <p class="text-sm font-normal text-gray-500 dark:text-gray-400 fade-in">Выберите игру и найдите новых тиммейтов!</p>
+        <ul class="my-4 space-y-3 fade-in">
+            {% for game in games %}
+            <li>
+                <a href="{% url 'game_profile' game=game %}" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 hover-effect group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white dark-hover-effect">
+                    <span class="flex-1 ms-3 whitespace-nowrap">{{ game }}</span>
                 </a>
-                </li>
-                <li>
-                    <a href="{% url 'game_profile' game='Valorant' %}" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-                    <span class="flex-1 ms-3 whitespace-nowrap">Valorant</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </body>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
 {% endblock %}

@@ -4,31 +4,77 @@
 
 {% block content %}
 
-<body class="bg-gray-800 text-white">
-    <main class="max-w-7xl mx-auto p-4">
-        <!-- Hero Section -->
-        <section class="flex flex-col justify-center items-center py-12">
+<style>
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+.hover-effect {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hover-effect:hover {
+    background-color: #4a5568;
+    transform: scale(1.05);
+}
+
+.link-hover-effect {
+    transition: color 0.3s ease;
+}
+
+.link-hover-effect:hover {
+    color: #63b3ed;
+}
+
+</style>
+
+<body class="bg-gray-800 text-white fade-in">
+    <main class="max-w-7xl mx-auto p-4 fade-in">
+
+        <section class="flex flex-col justify-center items-center py-12 fade-in">
             <h2 class="text-6xl font-bold mb-4">S & P - Search and Play</h2>
-            <img src="{% static 'images/sp.png' %}" class="h-60 my-2" alt="">
+            <img src="{% static 'images/sp.png' %}" class="h-60 my-2 pulse" alt="">
             <h3 class="text-5xl mb-10 uppercase">платформа для поиска тиммейтов для игр</h3>
             <p class="text-lg text-gray-400 mb-10">Ваше идеальное место для поиска тиммейтов, общения с игровым сообществом и отслеживания самых свежих новостей индустрии игр.</p>
-            <a href="{% url 'create_profile' %}" class="bg-gray-900 text-white py-2 px-6 rounded-lg hover:bg-gray-500">Анкета</a>
+            <a href="{% url 'create_profile' %}" class="bg-gray-900 text-white py-2 px-6 rounded-lg hover-effect">Анкета</a>
         </section>
     
-    
-        <!-- Community Section -->
-        <section class="py-12">
+        <section class="py-12 fade-in">
             <h2 class="text-3xl font-bold mb-4">Присоединяйтесь к сообществу</h2>
             <p class="text-xl mb-8">Общайтесь с другими геймерами, участвуйте в обсуждениях и станьте частью нашего яркого сообщества.</p>
             <div class="bg-gray-800 p-4 rounded-lg shadow-md">
                 <h3 class="text-2xl font-bold mb-2">Сообщество в Discord</h3>
                 <p class="mb-4">Обсуждайте стратегии, делитесь советами и находите тиммейтов в нашем Discord.</p>
-                <a href="#" class="text-blue-400 hover:underline">Перейти</a>
+                <a href="https://diploma-project-production.up.railway.app/sign-in?redirect_url=https%3A%2F%2Fdiploma-project-production.up.railway.app%2F" class="text-blue-400 link-hover-effect">Перейти</a>
             </div>
         </section>
     
     </main>
 </body>
-
 
 {% endblock %}

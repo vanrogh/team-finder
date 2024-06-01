@@ -3,22 +3,20 @@
 {% block title %}Новости{% endblock %}
 
 {% block content %}
-  
-    <h1 class="text-center my-8">Новости</h1>
-    <ul class="max-w-[1200px] mx-auto flex items-center justify-center mb-8 px-3">
-        {% for item in news %}
-            {% if item not in news %}
-                <p>No news yet</p>
-            {% endif %}
-            <li class="flex flex-col justify-center items-center border-b-2 pb-4">
-                <h2 class="text-center md:text-4xl text-2xl max-w-[680px]">{{ item.title }}</h2> <br>
-                <span>Админ - {{ item.created_at }}</span> <br>
-                {% if item.image %}
-                    <img class="md:max-w-[720px] max-w-[420px] mt-4" src="{{ item.image.url }}" alt="News Image"><br>
-                {% endif %}
-                <p class="max-w-[680px] font-medium text-md">{{ item.content|safe }}</p> 
-            </li>
-        {% endfor %}
+    <ul class="max-w-[1200px] mx-auto flex flex-col items-center justify-center mb-8 px-3">
+        {% if news %}
+            {% for item in news %}
+                <li class="flex flex-col justify-center items-center border-b-2 pb-4 w-full">
+                    <h2 class="text-center md:text-4xl text-2xl max-w-[680px] mt-10">{{ item.title }}</h2> <br>
+                    <span>{{ item.created_at }}</span> <br>
+                    {% if item.image %}
+                        <img class="md:max-w-[720px] max-w-[420px] mt-4" src="{{ item.image.url }}" alt="News Image"><br>
+                    {% endif %}
+                    <p class="max-w-[680px] font-medium text-md">{{ item.content|safe }}</p>
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>No news yet</p>
+        {% endif %}
     </ul>
-
 {% endblock %}

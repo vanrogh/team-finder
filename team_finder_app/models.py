@@ -2,10 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  
     discord = models.CharField(max_length=100)
     steam = models.CharField(max_length=100)
     epic_games = models.CharField(max_length=100, blank=True, null=True)
+    ubisoft = models.CharField(max_length=100, blank=True, null=True)
     age = models.IntegerField()
     game_choices = [
         ('Dota 2', 'Dota 2'),

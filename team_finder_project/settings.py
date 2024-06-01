@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'team_finder_app',
     'tailwind',
     'theme',
+    'channels'
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -79,6 +81,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'team_finder_project.wsgi.application'
+
+ASGI_APPLICATION = 'team_finder_project.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 
 # Database
